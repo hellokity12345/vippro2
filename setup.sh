@@ -5,7 +5,6 @@ export DEBIAN_FRONTEND=noninteractive
 apt update -y && apt upgrade -y
 apt --fix-broken install -y
 
-apt install nginx curl -y
 
 curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.3/install.sh | bash
 export NVM_DIR="$HOME/.nvm"
