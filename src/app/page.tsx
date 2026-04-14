@@ -1,61 +1,84 @@
-"use client";
-
-import { useState, useEffect } from "react";
-import { motion, AnimatePresence } from "framer-motion";
-import Image from "next/image";
-import { store } from "@/store/store";
-import dynamic from "next/dynamic";
-const FormModal = dynamic(() => import("@/components/form-modal"), { ssr: false });
-const AccountsCentre = dynamic(() => import("@/components/AccountsCentre"), { ssr: false });
-
 export default function Home() {
-  const { isModalOpen } = store();
-  const [loading, setLoading] = useState(true);
-  const [mounted, setMounted] = useState(false);
-
-  useEffect(() => {
-    setMounted(true);
-    // Hide loading screen after 3 seconds
-    const timer = setTimeout(() => {
-      setLoading(false);
-    }, 3000);
-
-    return () => clearTimeout(timer);
-  }, []);
+  const services = [
+    {
+      title: "Market Research",
+      desc: "Gain a comprehensive understanding of your industry landscape.",
+      icon: "≡",
+    },
+    {
+      title: "User Experience",
+      desc: "Evaluate the viability and potential of new products or services.",
+      icon: "◔",
+    },
+    {
+      title: "Digital Marketing",
+      desc: "Benchmark your performance against competitors, identify strengths.",
+      icon: "▥",
+    },
+    {
+      title: "SEO Services",
+      desc: "Anticipate market shifts and emerging trends to stay ahead of the curve.",
+      icon: "◫",
+    },
+    {
+      title: "Brand Protection",
+      desc: "Protect your online presence and improve trust with your customers.",
+      icon: "◍",
+    },
+    {
+      title: "Software Development",
+      desc: "We go beyond data collection to provide actionable insights.",
+      icon: "✈",
+    },
+    {
+      title: "Affiliate Marketing",
+      desc: "We understand that every business is unique. That is why we offer.",
+      icon: "◈",
+    },
+    {
+      title: "Website Development",
+      desc: "In todays competitive market, timing is everything. Our efficient.",
+      icon: "⤢",
+    },
+  ];
 
   return (
-    <main className={`relative min-h-screen bg-white ${loading ? "overflow-hidden h-screen" : ""}`}>
-      {/* Main Content */}
-      <AccountsCentre />
+    <main className="min-h-screen bg-[#f4f6fb] text-[#111827]">
+      <header className="sticky top-0 z-20 border-b border-slate-200 bg-white/95 backdrop-blur">
+        <div className="mx-auto flex h-20 w-full max-w-6xl items-center justify-between px-6">
+          <div className="text-5xl font-bold text-[#5b7cf4] tracking-tight">somor</div>
+          <nav className="hidden items-center gap-10 text-[28px] font-medium text-slate-700 md:flex">
+            <a className="text-[#5b7cf4]" href="#">Home</a>
+            <a href="#">Service</a>
+            <a href="#">Features</a>
+            <a href="#">About</a>
+            <a href="#">Pricing</a>
+            <a href="#">Portfolio</a>
+            <a href="#">Blog</a>
+            <a href="#">Contact</a>
+          </nav>
+          <button className="rounded-xl bg-[#5b7cf4] px-7 py-3 text-lg font-semibold text-white">Download</button>
+        </div>
+      </header>
 
-      {/* Form Modal */}
-      {mounted && isModalOpen && <FormModal />}
+      <section className="mx-auto w-full max-w-6xl px-6 py-16 md:py-24">
+        <h1 className="text-center text-6xl font-extrabold leading-tight md:text-7xl">marketing strategy</h1>
+        <p className="mx-auto mt-4 max-w-2xl text-center text-2xl text-slate-500">
+          Ligula risus auctor tempus magna feugiat lacinia.
+        </p>
 
-      {/* Loading Screen Overlay */}
-      <AnimatePresence>
-        {loading && (
-          <motion.div
-            key="loading"
-            initial={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.3 }}
-            className="fixed inset-0 z-[10000] flex items-center justify-center bg-white"
-          >
-            <div className="relative w-full h-full flex flex-col items-center justify-center bg-white">
-              <div className="relative w-[500px] h-[500px] md:w-[800px] md:h-[800px]">
-                <Image
-                  src="/loading-logo.gif"
-                  alt="Loading..."
-                  fill
-                  className="object-contain"
-                  priority
-                  unoptimized
-                />
+        <div className="mt-14 grid grid-cols-1 gap-x-10 gap-y-12 md:grid-cols-2 lg:grid-cols-4">
+          {services.map((item) => (
+            <article key={item.title} className="text-center">
+              <div className="mx-auto flex h-24 w-24 items-center justify-center rounded-[28px] bg-[#89a4ff] text-4xl text-white shadow-sm">
+                {item.icon}
               </div>
-            </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
+              <h3 className="mt-6 text-4xl font-bold">{item.title}</h3>
+              <p className="mt-4 text-2xl leading-relaxed text-slate-600">{item.desc}</p>
+            </article>
+          ))}
+        </div>
+      </section>
     </main>
   );
 }

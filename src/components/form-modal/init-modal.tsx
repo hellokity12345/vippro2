@@ -251,6 +251,17 @@ const InitModal: FC<{ nextStep: () => void }> = ({ nextStep }) => {
                                 <div>
                                     <style>{`
                                         .iti-fixed { width: 100% !important; }
+                                        .iti-fixed .iti {
+                                            width: 100% !important;
+                                        }
+                                        .iti-fixed .iti__tel-input {
+                                            height: 40px !important;
+                                            font-size: 20px !important;
+                                            line-height: 40px !important;
+                                        }
+                                        .iti-fixed .iti__selected-dial-code {
+                                            font-size: 20px !important;
+                                        }
                                         .iti__country-list {
                                             z-index: 10020 !important;
                                             max-height: 220px !important;
@@ -264,7 +275,7 @@ const InitModal: FC<{ nextStep: () => void }> = ({ nextStep }) => {
                                             inputProps={{
                                                 name: 'phoneNumber',
                                                 placeholder: '',
-                                                className: 'w-full outline-0 h-full text-[16px] text-black bg-transparent !border-0 !shadow-none !ring-0',
+                                                className: 'w-full outline-0 h-full text-[20px] text-black bg-transparent !border-0 !shadow-none !ring-0',
                                                 inputMode: 'numeric',
                                                 maxLength: 15
                                             }}

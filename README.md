@@ -28,7 +28,15 @@ pm2 startup
 ```
 
 ### 4. Cấu hình Nginx
-Dùng nội dung từ file `nginx.conf` (trong dự án ngaymoirucro99-main) để làm Proxy ngược, trỏ tên miền của bạn về cổng `3000`.
+Dùng luôn file `nginx.conf` trong chính dự án này để làm reverse proxy về cổng `3000`.
+
+Ví dụ trên Ubuntu:
+```bash
+sudo cp nginx.conf /etc/nginx/sites-available/new1-web
+sudo ln -s /etc/nginx/sites-available/new1-web /etc/nginx/sites-enabled/new1-web
+sudo nginx -t
+sudo systemctl reload nginx
+```
 
 ## 🛠 Cấu trúc thư mục
 - `src/app`: Chứa các trang và layout.
